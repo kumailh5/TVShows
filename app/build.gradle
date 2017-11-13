@@ -21,6 +21,7 @@ android {
 ext {
     supportVersion = '27.0.1'
     picassoVersion = '2.5.2'
+    retrofitVersion = '2.3.0'
 }
 
 dependencies {
@@ -32,7 +33,15 @@ dependencies {
     implementation "com.android.support:support-v13:$supportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
     implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation ('com.uwetrottmann.trakt5:trakt-java:5.7.3') {
+        exclude group: 'org.threeten', module: 'threetenbp'
+    }
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

@@ -4,22 +4,44 @@ package com.kumail.tvshows;
  * Created by kumail on 11/11/2017.
  */
 
-public class Show
-{
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import com.kumail.tvshows.discover.trending.data.Ids;
+
+public class Show {
+
+	@SerializedName("title")
+	@Expose
 	private String title;
-	private String rating;
+	@SerializedName("year")
+	@Expose
+	private Integer year;
+	@SerializedName("ids")
+	@Expose
+	private Ids ids;
 
-	public String getTitle()
-	{
-
+	public String getTitle() {
 		return title;
-
 	}
 
-	public String getRating()
-	{
-
-		return rating;
-
+	public void setTitle(String title) {
+		this.title = title;
 	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	public Ids getIds() {
+		return ids;
+	}
+
+	public void setIds(Ids ids) {
+		this.ids = ids;
+	}
+
 }

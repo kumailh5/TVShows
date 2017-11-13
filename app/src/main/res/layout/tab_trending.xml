@@ -11,4 +11,14 @@
         android:layout_height="match_parent"
         tools:context=".ui.BottomNavigation" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@android:style/Widget.Holo.Light.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorAccent"
+        android:layout_centerInParent="true"/>
+
 </RelativeLayout>
