@@ -18,8 +18,9 @@ public class RetrofitClient
 
 	private static Retrofit retrofit = null;
 	private static final String TraktClientID = "5d98be13eb1a05de1416f2dfacbaab5d7d8fad905a1ded33a48eb201e345a976";
+	private static final String TmdbApiKey= "0145e269d6f9647893ca62fcde80871e";
 
-	public static Retrofit getClient(String baseUrl)
+	public static Retrofit getTraktClient(String baseUrl)
 	{
 		OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 		httpClient.addInterceptor(new Interceptor()
@@ -40,15 +41,31 @@ public class RetrofitClient
 			}
 		});
 		OkHttpClient client = httpClient.build();
-		if (retrofit == null)
-		{
-			retrofit = new Retrofit.Builder()
-					.baseUrl(baseUrl)
-					.addConverterFactory(GsonConverterFactory.create())
-					.client(client)
-					.build();
-		}
+		retrofit = new Retrofit.Builder()
+				.baseUrl(baseUrl)
+				.addConverterFactory(GsonConverterFactory.create())
+				.client(client)
+				.build();
+//		if (retrofit == null)
+//		{
+//
+//		}
 
 		return retrofit;
 	}
+
+	public static Retrofit getTmdbClient(String baseUrl)
+	{
+		retrofit = new Retrofit.Builder()
+				.baseUrl(baseUrl)
+				.addConverterFactory(GsonConverterFactory.create())
+				.build();
+//		if (retrofit == null)
+//		{
+//
+//		}
+
+		return retrofit;
+	}
+
 }

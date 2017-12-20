@@ -15,16 +15,16 @@
         android:id="@+id/content_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
         android:layout_above="@+id/viewpager"
+        android:layout_below="@+id/toolbar"
         android:animateLayoutChanges="true"/>
 
     <com.kumail.tvshows.NonSwipeableViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_above="@+id/bottomBar"/>
+        android:layout_above="@+id/bottomBar"
+        android:layout_below="@id/toolbar"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomBar"
@@ -38,4 +38,11 @@
         app:itemTextColor="@color/btm_nav"
         app:menu="@menu/menu_nav"
         app:theme="@style/AppTheme"/>
+
+    <br.com.mauker.materialsearchview.MaterialSearchView
+        android:id="@+id/search_view"
+        style="@style/MaterialSearchViewStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

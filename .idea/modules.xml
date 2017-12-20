@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TVShows.iml" filepath="$PROJECT_DIR$/TVShows.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materialsearchview/materialsearchview.iml" filepath="$PROJECT_DIR$/materialsearchview/materialsearchview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materialsv/materialsv.iml" filepath="$PROJECT_DIR$/materialsv/materialsv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materialsv/materialsv.iml" filepath="$PROJECT_DIR$/materialsv/materialsv.iml" />
     </modules>
   </component>
 </project>

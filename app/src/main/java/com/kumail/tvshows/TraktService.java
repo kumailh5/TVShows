@@ -1,6 +1,5 @@
 package com.kumail.tvshows;
 
-import com.kumail.tvshows.discover.trending.data.RatingsApiResponse;
 import com.kumail.tvshows.discover.trending.data.ShowExtendedResponse;
 import com.kumail.tvshows.discover.trending.data.TrendingResponse;
 
@@ -20,17 +19,10 @@ public interface TraktService
 	@GET("shows/trending")
 	Call<List<TrendingResponse>> getTrending();
 
-	@GET("shows/{slug}/ratings")
-	Call<RatingsApiResponse> getRatings(@Path("slug") String slug);
-
 	@GET("shows/{slug}?extended=full")
 	Call<ShowExtendedResponse> getShowDetails(@Path("slug") String slug);
 
-
-//	https://api.trakt.tv/shows/game-of-thrones/ratings
-//	@GET("users/{username}")
-//
-//
-//	Call<User> getUser(@Path("username") String username);
+	@GET("search/show")
+	Call<List<SearchResponse>> getSearchResults(@Query("query") String query);
 
 }

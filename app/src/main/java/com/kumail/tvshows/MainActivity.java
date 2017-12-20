@@ -1,13 +1,10 @@
 package com.kumail.tvshows;
 
-import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,9 +16,10 @@ import android.view.View;
 import com.kumail.tvshows.discover.DiscoverFragment;
 import com.kumail.tvshows.home.HomeFragment;
 import com.kumail.tvshows.profile.ProfileFragment;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.mauker.materialsearchview.MaterialSearchView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity
 	Adapter adapter;
 	NonSwipeableViewPager viewPager;
 	BottomNavigationView mBottomBar;
+	MaterialSearchView searchView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +43,9 @@ public class MainActivity extends AppCompatActivity
 		setupViewPager(viewPager);
 		mBottomBar = findViewById(R.id.bottomBar);
 		BottomNavigationViewHelper.disableShiftMode(mBottomBar);
+		searchView = findViewById(R.id.search_view);
+//		searchView.adjustTintAlpha(0.9f);
+
 
 		viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
 		{
@@ -100,15 +102,19 @@ public class MainActivity extends AppCompatActivity
 					{
 						switch (item.getItemId())
 						{
-							case R.id.navigation_topics:
+							case R.id.nav_home:
 								viewPager.setCurrentItem(0, false);
 								break;
-							case R.id.navigation_chats:
+							case R.id.nav_discover:
 								viewPager.setCurrentItem(1, false);
 								break;
-							case R.id.navigation_profile:
+							case R.id.nav_profile:
 								viewPager.setCurrentItem(2, false);
 								break;
+						}
+						if (searchView.isOpen()) {
+							// Close the search on the back button press.
+							searchView.closeSearch();
 						}
 						return false;
 					}
@@ -159,5 +165,15 @@ public class MainActivity extends AppCompatActivity
 		toolbar.setTitle(R.string.home);
 		toolbar.setTitleTextColor(getColor(R.color.colorWhite));
 		setSupportActionBar(toolbar);
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (searchView.isOpen()) {
+			// Close the search on the back button press.
+			searchView.closeSearch();
+		} else {
+			super.onBackPressed();
+		}
 	}
 }

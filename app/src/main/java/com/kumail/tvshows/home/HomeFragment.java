@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -40,6 +43,33 @@ public class HomeFragment extends Fragment
 
 		setHasOptionsMenu(true);
 		return view;
+	}
+
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		menu.clear();
+		getActivity().getMenuInflater().inflate(R.menu.menu_tb_home, menu);
+		MenuItem search = menu.findItem(R.id.action_search);
+		SearchView searchView = (SearchView) search.getActionView();
+		search(searchView);
+	}
+
+	private void search(SearchView searchView)  {
+
+		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+			@Override
+			public boolean onQueryTextSubmit(String query) {
+
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String newText) {
+
+				return true;
+			}
+		});
 	}
 
 }

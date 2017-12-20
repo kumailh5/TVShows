@@ -6,7 +6,6 @@ package com.kumail.tvshows;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.kumail.tvshows.discover.trending.data.Ids;
 
 public class Show {
 
