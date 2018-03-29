@@ -37,12 +37,19 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
+    implementation 'jp.wasabeef:picasso-transformations:2.1.2'
+    // If you want to use the GPU Filters
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
     implementation "com.squareup.picasso:picasso:$picassoVersion"
     implementation ('com.uwetrottmann.trakt5:trakt-java:5.7.3') {
         exclude group: 'org.threeten', module: 'threetenbp'
     }
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
     implementation project(':materialsearchview')
+
+    implementation 'android.arch.persistence.room:runtime:1.0.0'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

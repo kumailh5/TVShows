@@ -13,9 +13,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.kumail.tvshows.discover.DiscoverFragment;
-import com.kumail.tvshows.home.HomeFragment;
-import com.kumail.tvshows.profile.ProfileFragment;
+import com.kumail.tvshows.discover.DiscoverFrag;
+import com.kumail.tvshows.home.HomeFrag;
+import com.kumail.tvshows.profile.ProfileFrag;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity
 		viewPager = findViewById(R.id.viewpager);
 		viewPager.setOffscreenPageLimit(1);
 		setupViewPager(viewPager);
-		mBottomBar = findViewById(R.id.bottomBar);
-		BottomNavigationViewHelper.disableShiftMode(mBottomBar);
+		mBottomBar = findViewById(R.id.bottom_bar);
+		BottomNavViewHelper.disableShiftMode(mBottomBar);
 		searchView = findViewById(R.id.search_view);
 //		searchView.adjustTintAlpha(0.9f);
 
@@ -125,9 +125,9 @@ public class MainActivity extends AppCompatActivity
 	private void setupViewPager(ViewPager viewPager)
 	{
 		adapter = new Adapter(getFragmentManager());
-		adapter.addFragment(new HomeFragment());
-		adapter.addFragment(new DiscoverFragment());
-		adapter.addFragment(new ProfileFragment());
+		adapter.addFragment(new HomeFrag());
+		adapter.addFragment(new DiscoverFrag());
+		adapter.addFragment(new ProfileFrag());
 		viewPager.setAdapter(adapter);
 	}
 

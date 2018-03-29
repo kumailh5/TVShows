@@ -3,7 +3,10 @@
     <string name="home">Home</string>
     <string name="discover">Discover</string>
     <string name="profile">Profile</string>
+    <string name="info">Info</string>
+    <string name="cast">Cast</string>
 
     <string name="action_search">Search</string>
     <string name="search_hint">Search Shows</string>
+    <string name="card_trans">card_trans</string>
 </resources>

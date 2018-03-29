@@ -23,11 +23,11 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomBar"
+        android:layout_above="@+id/bottom_bar"
         android:layout_below="@id/toolbar"/>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottomBar"
+        android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
@@ -37,7 +37,7 @@
         app:itemIconTint="@color/btm_nav"
         app:itemTextColor="@color/btm_nav"
         app:menu="@menu/menu_nav"
-        app:theme="@style/AppTheme"/>
+        android:theme="@style/AppTheme"/>
 
     <br.com.mauker.materialsearchview.MaterialSearchView
         android:id="@+id/search_view"

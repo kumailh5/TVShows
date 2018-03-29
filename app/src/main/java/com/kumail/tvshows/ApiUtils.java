@@ -1,5 +1,8 @@
 package com.kumail.tvshows;
 
+import com.kumail.tvshows.tmdb.TmdbService;
+import com.kumail.tvshows.trakt.TraktService;
+
 /**
  * Created by kumail on 12/11/2017.
  */

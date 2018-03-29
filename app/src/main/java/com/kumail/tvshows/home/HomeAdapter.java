@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kumail.tvshows.R;
-import com.kumail.tvshows.Show;
+import com.kumail.tvshows.trakt.Show;
 
 import java.util.ArrayList;
 

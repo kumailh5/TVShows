@@ -2,7 +2,7 @@ package com.kumail.tvshows.discover.trending.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.kumail.tvshows.Ids;
+import com.kumail.tvshows.trakt.Ids;
 
 import java.util.List;
 
@@ -72,6 +72,9 @@ public class ShowExtendedResponse
 	@SerializedName("aired_episodes")
 	@Expose
 	private Integer airedEpisodes;
+	@SerializedName("img_url")
+	@Expose
+	private String imgUrl;
 
 	public String getTitle() {
 		return title;
@@ -231,5 +234,13 @@ public class ShowExtendedResponse
 
 	public void setAiredEpisodes(Integer airedEpisodes) {
 		this.airedEpisodes = airedEpisodes;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 }
