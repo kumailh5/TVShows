@@ -36,7 +36,7 @@
         android:elevation="8dp"
         app:itemIconTint="@color/btm_nav"
         app:itemTextColor="@color/btm_nav"
-        app:menu="@menu/menu_nav"
+        app:menu="@menu/menu_bottom_nav"
         android:theme="@style/AppTheme"/>
 
     <br.com.mauker.materialsearchview.MaterialSearchView

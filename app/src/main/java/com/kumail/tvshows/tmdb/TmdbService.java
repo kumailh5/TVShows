@@ -13,10 +13,10 @@ public interface TmdbService
 	@GET("tv/{tv_id}/images?api_key=0145e269d6f9647893ca62fcde80871e")
 	Call<ShowImagesResponse> getImages(@Path("tv_id") String tmdbId);
 
-	@GET("tv/{tv_id}?api_key=0145e269d6f9647893ca62fcde80871e")
+	@GET("tv/{tv_id}?api_key=0145e269d6f9647893ca62fcde80871e&append_to_response=credits")
 	Call<ShowDetailsResponse> getShowDetails(@Path("tv_id") String tmdbId);
 
 
 	@GET("configuration?api_key=0145e269d6f9647893ca62fcde80871e")
-	Call<ImgConfResp> getConfig();
+	Call<ImageConfigResponse> getConfig();
 }

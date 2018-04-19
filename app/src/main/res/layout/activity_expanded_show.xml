@@ -36,7 +36,7 @@
         android:elevation="8dp"
         app:itemIconTint="@color/btm_nav"
         app:itemTextColor="@color/btm_nav"
-        app:menu="@menu/menu_nav_show_details"
+        app:menu="@menu/menu_bottom_nav_show_details"
         android:theme="@style/AppTheme"/>
 
 </RelativeLayout>

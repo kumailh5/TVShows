@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_info"
+        android:name="@string/info"
+        android:icon="@drawable/ic_info"
+        android:title="@string/info" />
+
+    <item
+        android:id="@+id/nav_cast"
+        android:name="@string/cast"
+        android:icon="@drawable/ic_people"
+        android:title="@string/cast" />
+
+    <item
+        android:id="@+id/nav_episodes"
+        android:name="@string/episodes"
+        android:icon="@drawable/ic_episodes"
+        android:title="@string/episodes" />
+
+</menu>

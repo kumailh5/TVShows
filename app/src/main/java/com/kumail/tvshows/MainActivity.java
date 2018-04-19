@@ -2,9 +2,9 @@ package com.kumail.tvshows;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.kumail.tvshows.discover.DiscoverFrag;
-import com.kumail.tvshows.home.HomeFrag;
-import com.kumail.tvshows.profile.ProfileFrag;
+import com.kumail.tvshows.discover.DiscoverFragment;
+import com.kumail.tvshows.home.HomeFragment;
+import com.kumail.tvshows.profile.ProfileFragment;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity
 		viewPager.setOnTouchListener(new View.OnTouchListener()
 		{
 
+
 			@Override
 			public boolean onTouch(View v, MotionEvent event)
 			{
@@ -124,10 +125,10 @@ public class MainActivity extends AppCompatActivity
 
 	private void setupViewPager(ViewPager viewPager)
 	{
-		adapter = new Adapter(getFragmentManager());
-		adapter.addFragment(new HomeFrag());
-		adapter.addFragment(new DiscoverFrag());
-		adapter.addFragment(new ProfileFrag());
+		adapter = new Adapter(getSupportFragmentManager());
+		adapter.addFragment(new HomeFragment());
+		adapter.addFragment(new DiscoverFragment());
+		adapter.addFragment(new ProfileFragment());
 		viewPager.setAdapter(adapter);
 	}
 

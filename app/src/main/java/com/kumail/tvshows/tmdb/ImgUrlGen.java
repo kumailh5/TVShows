@@ -6,7 +6,7 @@ package com.kumail.tvshows.tmdb;
 
 public class ImgUrlGen
 {
-	public String getUrl(ShowImagesResponse sir, ImgConfResp icr)
+	public String getUrl(ShowImagesResponse sir, ImageConfigResponse icr)
 	{
 		String filePath = sir.getBackdrops().get(0).getFilePath();
 		String secureUrl = icr.getImages().getSecureBaseUrl();

@@ -16,12 +16,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+    lintOptions {
+        textReport true
+        textOutput 'stdout'
+        ignore 'InvalidPackage'
+    }
 }
 
 ext {
-    supportVersion = '27.0.2'
+    supportVersion = '27.1.0'
     picassoVersion = '2.5.2'
     retrofitVersion = '2.3.0'
+    okhttpVersion = '3.10.0'
+    lifecycleVersion = '1.1.1'
+    roomVersion = '1.0.0'
+    circleImageViewVersion = '2.2.0'
+    heimdallVersion = '1.0.10'
 }
 
 dependencies {
@@ -34,22 +52,42 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     implementation 'com.google.code.gson:gson:2.8.1'
+    //For asynchronous calls
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
 
+    implementation 'com.squareup.retrofit:retrofit:1.9.0'
+
+
+    //Image loading library, picasso
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    //For image transformations with picasso
     implementation 'jp.wasabeef:picasso-transformations:2.1.2'
     // If you want to use the GPU Filters
     implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
-    implementation ('com.uwetrottmann.trakt5:trakt-java:5.7.3') {
+    //trat v2 java wrapper
+    implementation('com.uwetrottmann.trakt5:trakt-java:5.7.3') {
         exclude group: 'org.threeten', module: 'threetenbp'
     }
+    implementation 'com.jakewharton.timber:timber:4.7.0'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
     implementation project(':materialsearchview')
 
-    implementation 'android.arch.persistence.room:runtime:1.0.0'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
+    // Architecture components for local database
+    implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycleVersion"
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$roomVersion"
+
+    //Circular image views
+    implementation "de.hdodenhof:circleimageview:$circleImageViewVersion"
+
+    //OAuth 2.0 library for Trakt authorisation
+    implementation "com.github.rheinfabrik:Heimdall.droid:$heimdallVersion"
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

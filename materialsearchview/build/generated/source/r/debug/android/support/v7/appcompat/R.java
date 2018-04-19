@@ -670,11 +670,11 @@ public final class R {
         public static int text2 = 0x7f0c0081;
         public static int textSpacerNoButtons = 0x7f0c0082;
         public static int textSpacerNoTitle = 0x7f0c0083;
-        public static int time = 0x7f0c0087;
-        public static int title = 0x7f0c0088;
-        public static int titleDividerNoCustom = 0x7f0c0089;
-        public static int title_template = 0x7f0c008a;
-        public static int topPanel = 0x7f0c008c;
+        public static int time = 0x7f0c0088;
+        public static int title = 0x7f0c0089;
+        public static int titleDividerNoCustom = 0x7f0c008a;
+        public static int title_template = 0x7f0c008b;
+        public static int topPanel = 0x7f0c008d;
         public static int uniform = 0x7f0c0096;
         public static int up = 0x7f0c0097;
         public static int wrap_content = 0x7f0c009a;

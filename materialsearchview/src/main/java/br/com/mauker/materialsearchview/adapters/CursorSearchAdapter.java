@@ -72,7 +72,7 @@ public class  CursorSearchAdapter extends CursorAdapter {
         public ListViewHolder(View convertView) {
             iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);
             tv_content = (TextView) convertView.findViewById(R.id.tv_str);
-            tv_sub_content = (TextView) convertView.findViewById(R.id.tv_year);
+            tv_sub_content = (TextView) convertView.findViewById(R.id.text_year);
         }
     }
 }

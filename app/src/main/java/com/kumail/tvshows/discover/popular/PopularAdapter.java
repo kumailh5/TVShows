@@ -4,17 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kumail.tvshows.Repo;
-import com.kumail.tvshows.RepoDatabase;
-import com.kumail.tvshows.showdetails.ExpShowAct;
 import com.kumail.tvshows.R;
+import com.kumail.tvshows.showdetails.ExpandedShowActivity;
 import com.kumail.tvshows.tmdb.ShowDetailsResponse;
 import com.squareup.picasso.Picasso;
 
@@ -55,10 +52,10 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 		{
 			super(itemView);
 
-			title = itemView.findViewById(R.id.title);
-			rating = itemView.findViewById(R.id.rating);
-			year = itemView.findViewById(R.id.year);
-			image = itemView.findViewById(R.id.bg_image);
+			title = itemView.findViewById(R.id.text_title);
+			rating = itemView.findViewById(R.id.text_rating);
+			year = itemView.findViewById(R.id.text_year);
+			image = itemView.findViewById(R.id.image_background);
 		}
 	}
 
@@ -75,8 +72,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 	{
 		final ShowDetailsResponse sdr = showResponses.get(position);
 		final String url = imgUrls.get(position);
-		Log.d("PopularAdapterTst", sdr.getName());
-		Log.d("PopularAdapterTstimg", url);
 
 
 		holder.title.setText(sdr.getName());
@@ -97,14 +92,14 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 			@Override
 			public void onClick(View view)
 			{
-				Intent i = new Intent(mContext, ExpShowAct.class);
+				Intent i = new Intent(mContext, ExpandedShowActivity.class);
 				i.putExtra("EXTRA_SHOW_TITLE", sdr.getName());
 				i.putExtra("EXTRA_POSTER_IMG", sdr.getPosterPath());
 				i.putExtra("EXTRA_IMG_URL", url);
-				RepoDatabase
-						.getInstance(mContext)
-						.getRepoDao()
-						.insert(new Repo(1, "Cool Repo Name", "url"));
+//				RepoDatabase
+//						.getInstance(mContext)
+//						.getRepoDao()
+//						.insert(new Repo(1, "Cool Repo Name", "url"));
 
 				mContext.startActivity(i);
 

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".TimberApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_lnchr"
         android:label="@string/app_name"
@@ -18,13 +19,23 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
-
             </intent-filter>
         </activity>
 
-        <activity android:name=".showdetails.ExpShowAct">
+        <activity android:name=".showdetails.ExpandedShowActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".trakt.auth.ConnectTraktActivity"
+            android:label="@string/connect_trakt"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tvshowsoauth"/>
             </intent-filter>
         </activity>
 

@@ -4,16 +4,18 @@ package com.kumail.tvshows.tmdb;
  * Created by kumail on 14/02/2018.
  */
 
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class ShowDetailsResponse implements Parcelable
 {
-
 	@SerializedName("backdrop_path")
 	@Expose
 	private String backdropPath;
@@ -34,7 +36,9 @@ public class ShowDetailsResponse implements Parcelable
 	private String homepage;
 	@SerializedName("id")
 	@Expose
-	private Integer id;
+	@PrimaryKey
+	@NonNull
+	private Integer tmdbId;
 	@SerializedName("in_production")
 	@Expose
 	private Boolean inProduction;
@@ -92,237 +96,311 @@ public class ShowDetailsResponse implements Parcelable
 	@SerializedName("vote_count")
 	@Expose
 	private Integer voteCount;
+	@SerializedName("credits")
+	@Expose
+	private Credits credits;
 
-	public String getBackdropPath() {
+	public String getBackdropPath()
+	{
 		return backdropPath;
 	}
 
-	public void setBackdropPath(String backdropPath) {
+	public void setBackdropPath(String backdropPath)
+	{
 		this.backdropPath = backdropPath;
 	}
 
-	public List<CreatedBy> getCreatedBy() {
+	public List<CreatedBy> getCreatedBy()
+	{
 		return createdBy;
 	}
 
-	public void setCreatedBy(List<CreatedBy> createdBy) {
+	public void setCreatedBy(List<CreatedBy> createdBy)
+	{
 		this.createdBy = createdBy;
 	}
 
-	public List<Integer> getEpisodeRunTime() {
+	public List<Integer> getEpisodeRunTime()
+	{
 		return episodeRunTime;
 	}
 
-	public void setEpisodeRunTime(List<Integer> episodeRunTime) {
+	public void setEpisodeRunTime(List<Integer> episodeRunTime)
+	{
 		this.episodeRunTime = episodeRunTime;
 	}
 
-	public String getFirstAirDate() {
+	public String getFirstAirDate()
+	{
 		return firstAirDate;
 	}
 
-	public void setFirstAirDate(String firstAirDate) {
+	public void setFirstAirDate(String firstAirDate)
+	{
 		this.firstAirDate = firstAirDate;
 	}
 
-	public List<Genre> getGenres() {
+	public List<Genre> getGenres()
+	{
 		return genres;
 	}
 
-	public void setGenres(List<Genre> genres) {
+	public void setGenres(List<Genre> genres)
+	{
 		this.genres = genres;
 	}
 
-	public String getHomepage() {
+	public String getHomepage()
+	{
 		return homepage;
 	}
 
-	public void setHomepage(String homepage) {
+	public void setHomepage(String homepage)
+	{
 		this.homepage = homepage;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getTmdbId()
+	{
+		return tmdbId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setTmdbId(Integer tmdbId)
+	{
+		this.tmdbId = tmdbId;
 	}
 
-	public Boolean getInProduction() {
+	public Boolean getInProduction()
+	{
 		return inProduction;
 	}
 
-	public void setInProduction(Boolean inProduction) {
+	public void setInProduction(Boolean inProduction)
+	{
 		this.inProduction = inProduction;
 	}
 
-	public List<String> getLanguages() {
+	public List<String> getLanguages()
+	{
 		return languages;
 	}
 
-	public void setLanguages(List<String> languages) {
+	public void setLanguages(List<String> languages)
+	{
 		this.languages = languages;
 	}
 
-	public String getLastAirDate() {
+	public String getLastAirDate()
+	{
 		return lastAirDate;
 	}
 
-	public void setLastAirDate(String lastAirDate) {
+	public void setLastAirDate(String lastAirDate)
+	{
 		this.lastAirDate = lastAirDate;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public List<Network> getNetworks() {
+	public List<Network> getNetworks()
+	{
 		return networks;
 	}
 
-	public void setNetworks(List<Network> networks) {
+	public void setNetworks(List<Network> networks)
+	{
 		this.networks = networks;
 	}
 
-	public Integer getNumberOfEpisodes() {
+	public Integer getNumberOfEpisodes()
+	{
 		return numberOfEpisodes;
 	}
 
-	public void setNumberOfEpisodes(Integer numberOfEpisodes) {
+	public void setNumberOfEpisodes(Integer numberOfEpisodes)
+	{
 		this.numberOfEpisodes = numberOfEpisodes;
 	}
 
-	public Integer getNumberOfSeasons() {
+	public Integer getNumberOfSeasons()
+	{
 		return numberOfSeasons;
 	}
 
-	public void setNumberOfSeasons(Integer numberOfSeasons) {
+	public void setNumberOfSeasons(Integer numberOfSeasons)
+	{
 		this.numberOfSeasons = numberOfSeasons;
 	}
 
-	public List<String> getOriginCountry() {
+	public List<String> getOriginCountry()
+	{
 		return originCountry;
 	}
 
-	public void setOriginCountry(List<String> originCountry) {
+	public void setOriginCountry(List<String> originCountry)
+	{
 		this.originCountry = originCountry;
 	}
 
-	public String getOriginalLanguage() {
+	public String getOriginalLanguage()
+	{
 		return originalLanguage;
 	}
 
-	public void setOriginalLanguage(String originalLanguage) {
+	public void setOriginalLanguage(String originalLanguage)
+	{
 		this.originalLanguage = originalLanguage;
 	}
 
-	public String getOriginalName() {
+	public String getOriginalName()
+	{
 		return originalName;
 	}
 
-	public void setOriginalName(String originalName) {
+	public void setOriginalName(String originalName)
+	{
 		this.originalName = originalName;
 	}
 
-	public String getOverview() {
+	public String getOverview()
+	{
 		return overview;
 	}
 
-	public void setOverview(String overview) {
+	public void setOverview(String overview)
+	{
 		this.overview = overview;
 	}
 
-	public Double getPopularity() {
+	public Double getPopularity()
+	{
 		return popularity;
 	}
 
-	public void setPopularity(Double popularity) {
+	public void setPopularity(Double popularity)
+	{
 		this.popularity = popularity;
 	}
 
-	public String getPosterPath() {
+	public String getPosterPath()
+	{
 		return posterPath;
 	}
 
-	public void setPosterPath(String posterPath) {
+	public void setPosterPath(String posterPath)
+	{
 		this.posterPath = posterPath;
 	}
 
-	public List<ProductionCompany> getProductionCompanies() {
+	public List<ProductionCompany> getProductionCompanies()
+	{
 		return productionCompanies;
 	}
 
-	public void setProductionCompanies(List<ProductionCompany> productionCompanies) {
+	public void setProductionCompanies(List<ProductionCompany> productionCompanies)
+	{
 		this.productionCompanies = productionCompanies;
 	}
 
-	public List<Season> getSeasons() {
+	public List<Season> getSeasons()
+	{
 		return seasons;
 	}
 
-	public void setSeasons(List<Season> seasons) {
+	public void setSeasons(List<Season> seasons)
+	{
 		this.seasons = seasons;
 	}
 
-	public String getStatus() {
+	public String getStatus()
+	{
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(String status)
+	{
 		this.status = status;
 	}
 
-	public String getType() {
+	public String getType()
+	{
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(String type)
+	{
 		this.type = type;
 	}
 
-	public Double getVoteAverage() {
+	public Double getVoteAverage()
+	{
 		return voteAverage;
 	}
 
-	public void setVoteAverage(Double voteAverage) {
+	public void setVoteAverage(Double voteAverage)
+	{
 		this.voteAverage = voteAverage;
 	}
 
-	public Integer getVoteCount() {
+	public Integer getVoteCount()
+	{
 		return voteCount;
 	}
 
-	public void setVoteCount(Integer voteCount) {
+	public void setVoteCount(Integer voteCount)
+	{
 		this.voteCount = voteCount;
 	}
 
+	public Credits getCredits()
+	{
+		return credits;
+	}
 
-	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-		public ShowDetailsResponse createFromParcel(Parcel in) {
+	public void setCredits(Credits credits)
+	{
+		this.credits = credits;
+	}
+
+
+	public static final Parcelable.Creator CREATOR = new Parcelable.Creator()
+	{
+		public ShowDetailsResponse createFromParcel(Parcel in)
+		{
 			return new ShowDetailsResponse(in);
 		}
 
-		public ShowDetailsResponse[] newArray(int size) {
+		public ShowDetailsResponse[] newArray(int size)
+		{
 			return new ShowDetailsResponse[size];
 		}
 	};
 
-	public ShowDetailsResponse(Parcel in){
-		this.id = in.readInt();
+	public ShowDetailsResponse()
+	{
+	}
+
+	public ShowDetailsResponse(Parcel in)
+	{
+		this.tmdbId = in.readInt();
 		this.name = in.readString();
-		this.backdropPath =  in.readString();
-		this.firstAirDate =  in.readString();
-		this.voteAverage =  in.readDouble();
+		this.backdropPath = in.readString();
+		this.firstAirDate = in.readString();
+		this.voteAverage = in.readDouble();
 	}
 
 	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(this.id);
+	public void writeToParcel(Parcel dest, int flags)
+	{
+		dest.writeInt(this.tmdbId);
 		dest.writeString(this.name);
 		dest.writeString(this.backdropPath);
 		dest.writeString(this.firstAirDate);
@@ -330,7 +408,8 @@ public class ShowDetailsResponse implements Parcelable
 	}
 
 	@Override
-	public int describeContents() {
+	public int describeContents()
+	{
 		return 0;
 	}
 

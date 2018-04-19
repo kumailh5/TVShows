@@ -18,6 +18,11 @@ public class ApiUtils
 		return RetrofitClient.getTraktClient(BASE_URL_TRAKT).create(TraktService.class);
 	}
 
+	public static TraktService getOAuthTraktService(String accessToken)
+	{
+		return RetrofitClient.getOAuthTraktClient(BASE_URL_TRAKT, accessToken).create(TraktService.class);
+	}
+
 	public static TmdbService getTmdbService()
 	{
 		return RetrofitClient.getTmdbClient(BASE_URL_TMDB).create(TmdbService.class);

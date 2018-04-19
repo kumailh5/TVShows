@@ -1,5 +1,9 @@
 package com.kumail.tvshows.home;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,59 +12,99 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kumail.tvshows.R;
-import com.kumail.tvshows.trakt.Show;
+import com.kumail.tvshows.db.entity.ShowEntity;
+import com.kumail.tvshows.db.entity.WatchedEntity;
+import com.kumail.tvshows.showdetails.ExpandedShowActivity;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
+import timber.log.Timber;
 
 /**
  * Created by kumail on 11/11/2017.
  */
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>
-{
-	private ArrayList<Show> shows;
-	private int rowLayout;
-
-	public HomeAdapter(ArrayList<Show> list, int layout) {
-		shows = list;
-		rowLayout = layout;
-	}
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
+    //	private ArrayList<Show> shows;
+    private int rowLayout;
+    private List<ShowEntity> shows;
+    private List<WatchedEntity> watchedShows;
+    private Context mContext;
 
 
-	public static class ViewHolder extends RecyclerView.ViewHolder
-	{
-		TextView title;
-		TextView rating;
-		ImageView image;
+    public HomeAdapter(List<WatchedEntity> list, Context mContext) {
+        this.watchedShows = list;
+        this.mContext = mContext;
+    }
 
-		public ViewHolder(View itemView)
-		{
-			super(itemView);
 
-			title = itemView.findViewById(R.id.title);
-			rating = itemView.findViewById(R.id.rating);
-			image = itemView.findViewById(R.id.image);
-		}
-	}
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView titleText;
+        TextView ratingText;
+        ImageView backgroundImage;
 
-	@Override
-	public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
-	{
-		View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
+        public ViewHolder(View itemView) {
+            super(itemView);
 
-		return new ViewHolder(v);
-	}
+            titleText = itemView.findViewById(R.id.text_title);
+            ratingText = itemView.findViewById(R.id.text_rating);
+            backgroundImage = itemView.findViewById(R.id.image_background);
+        }
+    }
 
-	@Override
-	public void onBindViewHolder(ViewHolder viewHolder, int position)
-	{
-	}
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_home_card, viewGroup, false);
 
-	@Override
-	public int getItemCount()
-	{
-		return shows.size();
-	}
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        WatchedEntity we = watchedShows.get(position);
+        String url = we.getBackdropUrl();
+        Timber.d(we.getName());
+//		Timber.d("Title", sdr.getName());
+        viewHolder.titleText.setText(we.getName());
+
+        Picasso.with(mContext)
+
+                .load(url)
+                .fit()
+                .centerCrop()
+                .transform(new VignetteFilterTransformation(
+                        mContext, new PointF(0.5f, 0.5f),
+                        new float[]{0.0f, 0.0f, 0.0f}, 0.0f, 0.9f))
+                .into(viewHolder.backgroundImage);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, ExpandedShowActivity.class);
+
+                i.putExtra("EXTRA_SHOW_TMDB_ID", we.getTmdbId());
+                mContext.startActivity(i);
+
+
+            }
+        });
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        Timber.d(String.valueOf(watchedShows.size()));
+        return watchedShows.size();
+    }
+
+    public void addItems(List<WatchedEntity> lwe) {
+        this.watchedShows = lwe;
+        Timber.d("Here");
+        notifyDataSetChanged();
+    }
 
 
 }

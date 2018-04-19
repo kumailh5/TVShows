@@ -2,7 +2,7 @@ package com.kumail.tvshows.discover.trending.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.kumail.tvshows.trakt.Ids;
+import com.kumail.tvshows.trakt.data.Ids;
 
 import java.util.List;
 

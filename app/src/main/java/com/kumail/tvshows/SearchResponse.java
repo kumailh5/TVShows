@@ -2,7 +2,7 @@ package com.kumail.tvshows;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.kumail.tvshows.trakt.Show;
+import com.kumail.tvshows.trakt.data.Show;
 
 /**
  * Created by kumail on 27/11/2017.

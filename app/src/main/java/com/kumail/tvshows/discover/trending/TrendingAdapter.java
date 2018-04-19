@@ -1,20 +1,18 @@
 package com.kumail.tvshows.discover.trending;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kumail.tvshows.showdetails.ExpShowAct;
+import com.kumail.tvshows.db.entity.TrendingEntity;
+import com.kumail.tvshows.showdetails.ExpandedShowActivity;
 import com.kumail.tvshows.R;
 import com.kumail.tvshows.tmdb.ShowDetailsResponse;
 import com.squareup.picasso.Picasso;
@@ -23,6 +21,7 @@ import java.util.List;
 import java.util.Locale;
 
 import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
+import timber.log.Timber;
 
 
 /**
@@ -34,56 +33,54 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHo
 	private List<ShowDetailsResponse> showResponse;
 	private String imgUrl;
 	private Context mContext;
-	private List<String> imgUrls;
+//	private List<String> imgUrls;
+	private List<TrendingEntity> trendingShows;
 //	private final ShowClickListener showClickListener;
 
 
-	public TrendingAdapter(List<ShowDetailsResponse> lsdr, List<String> iurls, Context context)
+	public TrendingAdapter(List<TrendingEntity> trendingShows, Context context)
 	{
-		showResponse = lsdr;
-		imgUrls = iurls;
+		this.trendingShows = trendingShows;
+//		imgUrls = iurls;
 //		showClickListener = scl;
 		mContext = context;
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder
 	{
-		TextView title;
-		TextView rating;
-		TextView year;
-		ImageView image;
+		TextView titleText;
+		TextView ratingText;
+		TextView yearText;
+		ImageView backgroundImage;
 
 		public ViewHolder(View itemView)
 		{
 			super(itemView);
 
-			title = itemView.findViewById(R.id.title);
-			rating = itemView.findViewById(R.id.rating);
-			year = itemView.findViewById(R.id.year);
-			image = itemView.findViewById(R.id.bg_image);
+			titleText = itemView.findViewById(R.id.text_title);
+			ratingText = itemView.findViewById(R.id.text_rating);
+			yearText = itemView.findViewById(R.id.text_year);
+            backgroundImage = itemView.findViewById(R.id.image_background);
 		}
 	}
 
 	@Override
-	public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
+	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
-		View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_trending_card, viewGroup, false);
+		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_trending_card, parent, false);
 
 		return new ViewHolder(v);
 	}
 
 	@Override
-	public void onBindViewHolder(final TrendingAdapter.ViewHolder holder, int position)
+	public void onBindViewHolder(final ViewHolder viewHolder, int position)
 	{
-		final ShowDetailsResponse sdr = showResponse.get(position);
-		String url = imgUrls.get(position);
-		Log.d("TrendingAdapterTst", url);
-		Log.d("TrendingAdapterTst", sdr.getName());
+		TrendingEntity te = trendingShows.get(position);
+		String url = te.getBackdropUrl();
 
-
-		holder.title.setText(sdr.getName());
-		holder.rating.setText(String.format(Locale.ENGLISH, "%.1f", sdr.getVoteAverage()));
-		holder.year.setText(String.format(Locale.ENGLISH, "%s", sdr.getFirstAirDate().substring(0,4)));
+		viewHolder.titleText.setText(te.getName());
+		viewHolder.ratingText.setText(String.format(Locale.ENGLISH, "%.1f", te.getVoteAverage()));
+		viewHolder.yearText.setText(String.format(Locale.ENGLISH, "%s", te.getFirstAirDate().substring(0,4)));
 
 		Picasso.with(mContext)
 
@@ -93,37 +90,43 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHo
 				.transform(new VignetteFilterTransformation(
 						mContext, new PointF(0.5f, 0.5f),
 						new float[] { 0.0f, 0.0f, 0.0f }, 0.0f, 0.9f))
-				.into(holder.image);
+				.into(viewHolder.backgroundImage);
 
-		ViewCompat.setTransitionName(holder.image, sdr.getName());
+		ViewCompat.setTransitionName(viewHolder.backgroundImage, te.getName());
 
-		holder.itemView.setOnClickListener(new View.OnClickListener()
+		viewHolder.itemView.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
-				Intent i = new Intent(mContext, ExpShowAct.class);
+				Intent i = new Intent(mContext, ExpandedShowActivity.class);
 
-				View sharedView = holder.image;
-				String transitionName = mContext.getString(R.string.card_trans);
+				i.putExtra("EXTRA_SHOW_TITLE", te.getName());
+				i.putExtra("EXTRA_POSTER_URL", te.getPosterUrl());
+				i.putExtra("EXTRA_SHOW_TMDB_ID", te.getTmdbId());
+//				i.putExtra("EXTRA_IMG_URL", url);
+				mContext.startActivity(i);
 
-				ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) mContext, sharedView, transitionName);
-				mContext.startActivity(i, transitionActivityOptions.toBundle());
+//				View sharedView = holder.backgroundImage;
+//				String transitionName = mContext.getString(R.string.card_trans);
+//
+//				ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) mContext, sharedView, transitionName);
+//				mContext.startActivity(i, transitionActivityOptions.toBundle());
 
-//				showClickListener.onShowClick(holder.getAdapterPosition(), sdr, holder.image);
+//				showClickListener.onShowClick(holder.getAdapterPosition(), sdr, holder.backgroundImage);
 
-//				Intent intent = new Intent(mContext, ExpShowAct.class);
+//				Intent intent = new Intent(mContext, ExpandedShowActivity.class);
 //				ActivityOptionsCompat options = ActivityOptionsCompat.
 //						makeSceneTransitionAnimation(mContext,
-//								holder.image,
-//								ViewCompat.getTransitionName(holder.image));
+//								holder.backgroundImage,
+//								ViewCompat.getTransitionName(holder.backgroundImage));
 //				mContext.startActivity(intent, options.toBundle());
 
 //				ExpShowFrag.
 //				ExpShowFrag expShowFrag = ExpShowFrag.newInstance();
 //				getActivity().getFragmentManager()
 //						.beginTransaction()
-//						.addSharedElement(holder.image, ViewCompat.getTransitionName(holder.image))
+//						.addSharedElement(holder.backgroundImage, ViewCompat.getTransitionName(holder.backgroundImage))
 //						.addToBackStack(TAG)
 //						.replace(R.id.content, simpleFragmentB)
 //						.commit();
@@ -134,6 +137,13 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHo
 	@Override
 	public int getItemCount()
 	{
-		return imgUrls.size();
+		Timber.d(String.valueOf(trendingShows.size()));
+		return trendingShows.size();
+	}
+
+	public void addItems(List<TrendingEntity> lte) {
+		this.trendingShows = lte;
+		Timber.d("addItems");
+		notifyDataSetChanged();
 	}
 }
