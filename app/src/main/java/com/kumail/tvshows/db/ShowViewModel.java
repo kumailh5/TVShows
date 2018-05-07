@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 
 import com.kumail.tvshows.db.entity.EpisodesEntity;
+import com.kumail.tvshows.db.entity.PopularEntity;
 import com.kumail.tvshows.db.entity.ShowEntity;
 import com.kumail.tvshows.db.entity.TrendingEntity;
 import com.kumail.tvshows.db.entity.UserEntity;
@@ -20,11 +21,11 @@ import java.util.List;
 public class ShowViewModel extends AndroidViewModel {
     public final LiveData<List<ShowEntity>> shows;
     public final LiveData<List<TrendingEntity>> trendingShows;
+    public final LiveData<List<PopularEntity>> popularShows;
     public final LiveData<UserEntity> user;
     public final LiveData<AccessTokenResponse> accessToken;
     public final LiveData<List<WatchedEntity>> watchedShows;
     public final LiveData<List<EpisodesEntity>> episodes;
-//	public final LiveData<List<CastEntity>> cast;
 
     private AppDatabase appDatabase;
 
@@ -37,6 +38,10 @@ public class ShowViewModel extends AndroidViewModel {
         trendingShows = appDatabase
                 .trendingDao()
                 .loadTrendingShows();
+
+        popularShows = appDatabase
+                .popularDao()
+                .loadPopularShows();
 
         user = appDatabase
                 .userDao()
@@ -54,10 +59,6 @@ public class ShowViewModel extends AndroidViewModel {
                 .episodesDao()
                 .loadEpisodes(0);
 
-//		cast = appDatabase
-//				.castDao()
-//				.loadCast();
-
         shows = appDatabase
                 .showDao()
                 .loadShows();
@@ -69,6 +70,10 @@ public class ShowViewModel extends AndroidViewModel {
 
     public LiveData<List<TrendingEntity>> getTrendingShows() {
         return trendingShows;
+    }
+
+    public LiveData<List<PopularEntity>> getPopularShows() {
+        return popularShows;
     }
 
     public LiveData<UserEntity> getUser() {
@@ -87,10 +92,6 @@ public class ShowViewModel extends AndroidViewModel {
         return episodes;
     }
 
-//	public LiveData<List<CastEntity>> getCast()
-//	{
-//		return cast;
-//	}
 
 }
 

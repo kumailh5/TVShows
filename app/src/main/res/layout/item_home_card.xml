@@ -25,31 +25,32 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="150dp">
 
         <TextView
             android:id="@+id/text_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
             android:textSize="18sp"
-            android:textStyle="bold"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"/>
 
         <TextView
-            android:id="@+id/text_rating"
+            android:id="@+id/text_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_title"
-            android:textSize="12sp"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
             android:textStyle="italic"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="16dp"/>
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="5dp"/>
 
     </RelativeLayout>
 

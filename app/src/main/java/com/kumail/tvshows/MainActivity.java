@@ -1,5 +1,6 @@
 package com.kumail.tvshows;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -7,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -15,7 +15,7 @@ import android.view.View;
 
 import com.kumail.tvshows.discover.DiscoverFragment;
 import com.kumail.tvshows.home.HomeFragment;
-import com.kumail.tvshows.profile.ProfileFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 		setupToolBar();
 
 		viewPager = findViewById(R.id.viewpager);
-		viewPager.setOffscreenPageLimit(1);
+		viewPager.setOffscreenPageLimit(0);
 		setupViewPager(viewPager);
 		mBottomBar = findViewById(R.id.bottom_bar);
 		BottomNavViewHelper.disableShiftMode(mBottomBar);
@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity
 			private String[] titles =
 					{
 							getString(R.string.home),
-							getString(R.string.discover),
-							getString(R.string.profile)
+							getString(R.string.discover)
 					};
 
 			@Override
@@ -109,9 +108,9 @@ public class MainActivity extends AppCompatActivity
 							case R.id.nav_discover:
 								viewPager.setCurrentItem(1, false);
 								break;
-							case R.id.nav_profile:
-								viewPager.setCurrentItem(2, false);
-								break;
+//							case R.id.nav_profile:
+//								viewPager.setCurrentItem(2, false);
+//								break;
 						}
 						if (searchView.isOpen()) {
 							// Close the search on the back button press.
@@ -128,7 +127,7 @@ public class MainActivity extends AppCompatActivity
 		adapter = new Adapter(getSupportFragmentManager());
 		adapter.addFragment(new HomeFragment());
 		adapter.addFragment(new DiscoverFragment());
-		adapter.addFragment(new ProfileFragment());
+//		adapter.addFragment(new ProfileFragment());
 		viewPager.setAdapter(adapter);
 	}
 

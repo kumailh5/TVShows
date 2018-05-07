@@ -13,12 +13,6 @@
         android:title="@string/action_search" />
 
     <item
-        android:id="@+id/action_filter"
-        android:name="filter"
-        app:showAsAction="never"
-        android:title="filter" />
-
-    <item
         android:id="@+id/action_sign_in"
         android:name="@string/sign_in"
         app:showAsAction="never"

@@ -107,9 +107,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         Show s = new Show();
-
         list.add(s);
-//		mViewModel = ViewModelProviders.of(getActivity()).get(ShowViewModel.class);
+
         progressBar = view.findViewById(R.id.progress_bar);
         mRecyclerView = view.findViewById(R.id.rv);
         if (mAdapter == null) {
@@ -128,12 +127,6 @@ public class HomeFragment extends Fragment {
         subscribeUiUser();
         subscribeUiShows();
 
-//        if(user != null) {
-//
-//            Timber.d("onCreateView Not null");
-//            Timber.d(user.getUsername());
-//            loadWatched();
-//        }
         setHasOptionsMenu(true);
         return view;
     }
@@ -406,9 +399,6 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.action_filter:
-                return true;
-
             case R.id.action_sign_in:
                 Intent i = new Intent(getContext(), ConnectTraktActivity.class);
                 startActivity(i);

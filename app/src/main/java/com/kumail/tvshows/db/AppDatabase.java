@@ -9,6 +9,7 @@ import com.kumail.tvshows.db.dao.AccessTokenDao;
 import com.kumail.tvshows.db.dao.CastDao;
 import com.kumail.tvshows.db.dao.EpisodesDao;
 import com.kumail.tvshows.db.dao.InfoDao;
+import com.kumail.tvshows.db.dao.PopularDao;
 import com.kumail.tvshows.db.dao.ShowDao;
 import com.kumail.tvshows.db.dao.TrendingDao;
 import com.kumail.tvshows.db.dao.UserDao;
@@ -16,6 +17,7 @@ import com.kumail.tvshows.db.dao.WatchedDao;
 import com.kumail.tvshows.db.entity.CastEntity;
 import com.kumail.tvshows.db.entity.EpisodesEntity;
 import com.kumail.tvshows.db.entity.InfoEntity;
+import com.kumail.tvshows.db.entity.PopularEntity;
 import com.kumail.tvshows.db.entity.ShowEntity;
 import com.kumail.tvshows.db.entity.TrendingEntity;
 import com.kumail.tvshows.db.entity.UserEntity;
@@ -28,6 +30,7 @@ import com.kumail.tvshows.trakt.auth.AccessTokenResponse;
 
 @Database(entities = {AccessTokenResponse.class,
         TrendingEntity.class,
+        PopularEntity.class,
         UserEntity.class,
         WatchedEntity.class,
         InfoEntity.class,
@@ -44,6 +47,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract TrendingDao trendingDao();
 
+    public abstract PopularDao popularDao();
 
     public abstract UserDao userDao();
 

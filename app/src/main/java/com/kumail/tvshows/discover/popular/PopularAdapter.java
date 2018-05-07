@@ -3,6 +3,7 @@ package com.kumail.tvshows.discover.popular;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kumail.tvshows.R;
+import com.kumail.tvshows.db.entity.PopularEntity;
 import com.kumail.tvshows.showdetails.ExpandedShowActivity;
 import com.kumail.tvshows.tmdb.ShowDetailsResponse;
 import com.squareup.picasso.Picasso;
@@ -19,6 +21,7 @@ import java.util.List;
 import java.util.Locale;
 
 import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
+import timber.log.Timber;
 
 
 /**
@@ -27,80 +30,80 @@ import jp.wasabeef.picasso.transformations.gpu.VignetteFilterTransformation;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder>
 {
-	private List<ShowDetailsResponse> showResponses;
-	private ShowDetailsResponse showResponse;
+	private List<ShowDetailsResponse> showResponse;
 	private String imgUrl;
 	private Context mContext;
-	private List<String> imgUrls;
+	//	private List<String> imgUrls;
+	private List<PopularEntity> popularShows;
+//	private final ShowClickListener showClickListener;
 
 
-	public PopularAdapter(List <ShowDetailsResponse> lsdr, List <String> iurls, Context context)
+	public PopularAdapter(List<PopularEntity> popularShows, Context context)
 	{
-		showResponses = lsdr;
-		imgUrls = iurls;
+		this.popularShows = popularShows;
+//		imgUrls = iurls;
+//		showClickListener = scl;
 		mContext = context;
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder
 	{
-		TextView title;
-		TextView rating;
-		TextView year;
-		ImageView image;
+		TextView titleText;
+		TextView ratingText;
+		TextView yearText;
+		ImageView backgroundImage;
 
 		public ViewHolder(View itemView)
 		{
 			super(itemView);
 
-			title = itemView.findViewById(R.id.text_title);
-			rating = itemView.findViewById(R.id.text_rating);
-			year = itemView.findViewById(R.id.text_year);
-			image = itemView.findViewById(R.id.image_background);
+			titleText = itemView.findViewById(R.id.text_title);
+			ratingText = itemView.findViewById(R.id.text_rating);
+			yearText = itemView.findViewById(R.id.text_year);
+			backgroundImage = itemView.findViewById(R.id.image_background);
 		}
 	}
 
 	@Override
-	public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
+	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
-		View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_popular_card, viewGroup, false);
+		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_popular_card, parent, false);
 
 		return new ViewHolder(v);
 	}
 
 	@Override
-	public void onBindViewHolder(PopularAdapter.ViewHolder holder, int position)
+	public void onBindViewHolder(final ViewHolder viewHolder, int position)
 	{
-		final ShowDetailsResponse sdr = showResponses.get(position);
-		final String url = imgUrls.get(position);
+		PopularEntity pe = popularShows.get(position);
+		String url = pe.getBackdropUrl();
 
-
-		holder.title.setText(sdr.getName());
-		holder.rating.setText(String.format(Locale.ENGLISH, "%.1f", sdr.getVoteAverage()));
-		holder.year.setText(String.format(Locale.ENGLISH, "%s", sdr.getFirstAirDate().substring(0,4)));
+		viewHolder.titleText.setText(pe.getName());
+		viewHolder.ratingText.setText(String.format(Locale.ENGLISH, "%.1f", pe.getVoteAverage()));
+		viewHolder.yearText.setText(String.format(Locale.ENGLISH, "%s", pe.getFirstAirDate().substring(0,4)));
 
 		Picasso.with(mContext)
+
 				.load(url)
 				.fit()
 				.centerCrop()
 				.transform(new VignetteFilterTransformation(
-						mContext, new PointF(0.5f, 0.f),
+						mContext, new PointF(0.5f, 0.5f),
 						new float[] { 0.0f, 0.0f, 0.0f }, 0.0f, 0.9f))
-				.into(holder.image);
+				.into(viewHolder.backgroundImage);
 
-		holder.itemView.setOnClickListener(new View.OnClickListener()
+		ViewCompat.setTransitionName(viewHolder.backgroundImage, pe.getName());
+
+		viewHolder.itemView.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
 				Intent i = new Intent(mContext, ExpandedShowActivity.class);
-				i.putExtra("EXTRA_SHOW_TITLE", sdr.getName());
-				i.putExtra("EXTRA_POSTER_IMG", sdr.getPosterPath());
-				i.putExtra("EXTRA_IMG_URL", url);
-//				RepoDatabase
-//						.getInstance(mContext)
-//						.getRepoDao()
-//						.insert(new Repo(1, "Cool Repo Name", "url"));
 
+				i.putExtra("EXTRA_SHOW_TITLE", pe.getName());
+				i.putExtra("EXTRA_POSTER_URL", pe.getPosterUrl());
+				i.putExtra("EXTRA_SHOW_TMDB_ID", pe.getTmdbId());
 				mContext.startActivity(i);
 
 			}
@@ -110,8 +113,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 	@Override
 	public int getItemCount()
 	{
-		return showResponses.size();
+		Timber.d(String.valueOf(popularShows.size()));
+		return popularShows.size();
 	}
 
-
+	public void addItems(List<PopularEntity> lpe) {
+		this.popularShows = lpe;
+		Timber.d("addItems");
+		notifyDataSetChanged();
+	}
 }

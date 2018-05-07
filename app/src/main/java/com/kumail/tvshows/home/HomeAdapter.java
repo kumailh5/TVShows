@@ -42,14 +42,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleText;
-        TextView ratingText;
+        TextView progressText;
         ImageView backgroundImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             titleText = itemView.findViewById(R.id.text_title);
-            ratingText = itemView.findViewById(R.id.text_rating);
+            progressText = itemView.findViewById(R.id.text_progress);
             backgroundImage = itemView.findViewById(R.id.image_background);
         }
     }
@@ -68,6 +68,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         Timber.d(we.getName());
 //		Timber.d("Title", sdr.getName());
         viewHolder.titleText.setText(we.getName());
+        int missed = we.getTotalEpisodes() - we.getPlays();
+        viewHolder.progressText.setText(String.format("%d missed", missed));
+
+        Timber.d("Here bind");
 
         Picasso.with(mContext)
 

@@ -4,11 +4,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kumail.tvshows.R;
 import com.kumail.tvshows.db.AppDatabase;
@@ -31,11 +34,12 @@ public class InfoFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_info, container, false);
-
+		TextView tileText;
+		ImageButton addImgButton;
 		if(show != null){
             String name = show.getName();
-            TextView tvTitle =  view.findViewById(R.id.text_title);
-            tvTitle.setText(name);
+			tileText = view.findViewById(R.id.text_title);
+			tileText.setText(name);
 
             String imgUrl = show.getPosterUrl();
             ImageView img = view.findViewById(R.id.iv_main);
@@ -49,7 +53,20 @@ public class InfoFragment extends Fragment
 
             TextView tvOverview = view.findViewById(R.id.tv_overview);
             tvOverview.setText(show.getOverview());
-        }
+
+
+			addImgButton =view.findViewById(R.id.img_btn_add);
+			addImgButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					String s = "Show Added";
+					addImgButton.setColorFilter(ContextCompat.getColor(getContext(), R.color.green));
+					Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+				}
+			});
+
+
+		}
 
 //		Timber.d(String.format(Locale.ENGLISH, "onCreateView %d", ((ExpandedShowActivity) getActivity()).getTmdbId()));
 

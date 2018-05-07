@@ -46,6 +46,18 @@
             android:layout_toEndOf="@id/cv_main_img"
             android:textSize="20sp"/>
 
+        <ImageButton
+            android:id="@+id/img_btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/divider"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:tint="@color/grey600"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_add_circle"/>
+
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"

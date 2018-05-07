@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
+    android:minHeight="80dp"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
     android:paddingTop="8dp">
@@ -19,34 +20,42 @@
         android:textColor="@color/white"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/text_title"
+    <RelativeLayout
+        android:id="@+id/text_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="6dp"
-        android:layout_toEndOf="@id/text_number"
-        android:textColor="@color/colorText"
-        android:textSize="20sp" />
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/text_number">
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorText"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/text_overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="6dp"
-        android:layout_toEndOf="@id/text_number"
-        android:layout_below="@id/text_title"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/text_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_below="@id/text_title"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/text_overview"
+        android:layout_below="@id/text_box"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
         android:background="@color/gray_50" />
 
