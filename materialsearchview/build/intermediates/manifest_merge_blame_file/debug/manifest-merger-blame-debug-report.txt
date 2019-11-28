@@ -1,0 +1,32 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="br.com.mauker.materialsearchview"
+4    android:versionCode="13"
+5    android:versionName="1.2.2" >
+6    <!--
+7        Authorities is the package name, while name is the file of the provider
+8        Add content provider so android's content resolver can see it.
+9        The authority matches package, name represents the file the provider is in.
+10        The syncable flag lets android now we're going to synchronize our content provider with the server.
+11        Changing the exported tag to false means that only our app can see the content.
+12    -->
+13    <!-- <provider -->
+14    <!-- android:name=".db.HistoryProvider" -->
+15    <!-- android:authorities="br.com.mauker.materialsearchview.searchhistorydatabase" -->
+16    <!-- android:exported="false" -->
+17    <!-- android:protectionLevel="signature" -->
+18    <!-- android:syncable="true"/> -->
+19    <uses-sdk
+20        android:minSdkVersion="14"
+20-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/src/main/AndroidManifest.xml
+21        android:targetSdkVersion="27" />
+21-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/src/main/AndroidManifest.xml
+22
+23    <application
+23-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/src/main/AndroidManifest.xml:4:5-7:11
+24        android:allowBackup="true"
+24-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/src/main/AndroidManifest.xml:5:9-35
+25        android:supportsRtl="true" />
+25-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/src/main/AndroidManifest.xml:6:9-35
+26
+27</manifest>

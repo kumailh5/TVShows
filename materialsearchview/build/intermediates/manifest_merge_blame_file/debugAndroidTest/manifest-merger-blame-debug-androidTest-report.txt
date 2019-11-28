@@ -1,0 +1,45 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="br.com.mauker.materialsearchview.test" >
+4
+5    <uses-sdk
+5-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:5:5-74
+6        android:minSdkVersion="14"
+6-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:5:15-41
+7        android:targetSdkVersion="27" />
+7-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:11:5-15:87
+10        android:name="android.test.InstrumentationTestRunner"
+10-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:11:22-75
+11        android:functionalTest="false"
+11-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:14:22-52
+12        android:handleProfiling="false"
+12-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:13:22-53
+13        android:label="Tests for br.com.mauker.materialsearchview.test"
+13-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:15:22-85
+14        android:targetPackage="br.com.mauker.materialsearchview.test" />
+14-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:12:22-83
+15
+16    <application
+16-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:7:5-9:19
+17        android:allowBackup="true"
+17-->[__tested_artifact__::materialsearchview] /Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:9-35
+18        android:debuggable="true"
+18-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:7:18-43
+19        android:supportsRtl="true" >
+19-->[__tested_artifact__::materialsearchview] /Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-35
+20        <uses-library android:name="android.test.runner" />
+20-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:8:9-60
+20-->/Users/kumailhussain/AndroidStudioProjects/Personal/TVShows/materialsearchview/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger7774860225626651958.xml:8:23-57
+21
+22        <meta-data
+22-->[android.arch.lifecycle:runtime:1.0.0] /Users/kumailhussain/.gradle/caches/transforms-2/files-2.1/2651008cd98233e6b4b850667bef3705/runtime-1.0.0/AndroidManifest.xml:25:9-27:47
+23            android:name="android.arch.lifecycle.VERSION"
+23-->[android.arch.lifecycle:runtime:1.0.0] /Users/kumailhussain/.gradle/caches/transforms-2/files-2.1/2651008cd98233e6b4b850667bef3705/runtime-1.0.0/AndroidManifest.xml:26:13-58
+24            android:value="27.0.0-SNAPSHOT" />
+24-->[android.arch.lifecycle:runtime:1.0.0] /Users/kumailhussain/.gradle/caches/transforms-2/files-2.1/2651008cd98233e6b4b850667bef3705/runtime-1.0.0/AndroidManifest.xml:27:13-44
+25    </application>
+26
+27</manifest>
